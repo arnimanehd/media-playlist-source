@@ -766,6 +766,7 @@ static void *mps_create(obs_data_t *settings, obs_source_t *source)
 	obs_data_set_bool(media_source_data, "log_changes", false);
 	mps->current_media_source =
 		obs_source_create_private("ffmpeg_source", "current_media_source", media_source_data);
+	obs_source_set_audio_mixers(mps->current_media_source, 0);
 	obs_source_add_active_child(mps->source, mps->current_media_source);
 	obs_source_add_audio_capture_callback(mps->current_media_source, mps_audio_callback, mps);
 
